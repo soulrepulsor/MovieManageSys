@@ -1,0 +1,20 @@
+{
+    "admin": {
+        "password": "password",
+        "email": "placeholder@placeholder.com",
+        "fname": "placeholder",
+        "lname": "placeholder",
+        "watched": [1],
+        "latest": [1],
+        "avgRating": 0.0
+    },
+    "user1": {
+        "password": "password",
+        "email": "placeholder@placeholder.com",
+        "fname": "placeholder",
+        "lname": "placeholder",
+        "watched": [1,2],
+        "latest": [2],
+        "avgRating": 0.0
+    }
+}
