@@ -14,7 +14,7 @@ public class UserCreation {
                 email.trim().isEmpty() || fname.trim().isEmpty() || lname.trim().isEmpty())
             throw  new Exception("ONE OF THE FIELD IS MISSING!!!");
 
-        FileSkeleton fs = new FileSkeleton("Resources/USER");
+        FileSkeleton fs = new FileSkeleton("USER");
         JSONObject details = new JSONObject();
         try {
             details.put("password", password.trim());

@@ -1,39 +1,78 @@
 package GUI;
 
-import MovieOperation.MovieTableModel;
-import UserOperation.Authentication;
-import UserOperation.AuthenticationException;
+import Algorithm.Algorithm;
+import UserOperation.UserController;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
-public class Search {
+public class Search extends BaseGUI {
     private JPanel jPanel;
-    private JButton btn;
-    private JTextField usernameTextfield;
-    private JTextField passwordTextfield;
-    private JPanel panelBottom;
+    private JTextField searchTextfield;
+    private JTable jTable;
 
-    public Search() {
-        jPanel = new JPanel();
-        init();
+    public Search(UserController userController, JFrame frame) {
+        super(frame, userController);
+        jPanel = super.getjPanel();
+        initSearchGui();
     }
 
-    private void init() {
+    private void initSearchGui() {
         MovieTableModel movieTableModel = new MovieTableModel();
 
-        JTable jTable = new JTable(movieTableModel);
+        JPanel searchPanel = new JPanel(new FlowLayout());
+        JLabel searchLabel = new JLabel("Search:");
+        searchTextfield = new JTextField("", 20);
+        JButton searchButton = new JButton("Search");
+        searchButton.addActionListener(this::setSearchButton);
+        searchPanel.add(searchLabel);
+        searchPanel.add(searchTextfield);
+        searchPanel.add(searchButton);
+
+        jTable = new JTable(movieTableModel);
+        jTable.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (e.getClickCount() == 2) {
+                    JTable target = (JTable) e.getSource();
+
+                    int row = target.getSelectedRow();
+                    rowDoubleClicked((Integer) target.getValueAt(row, -1));
+                }
+            }
+        });
+
         jTable.setAutoCreateRowSorter(true);
         JScrollPane scrollPane = new JScrollPane(jTable);
-        scrollPane.setPreferredSize(new Dimension(380,280));
 
-        jPanel.setLayout(new FlowLayout());
-        jPanel.add(scrollPane);
+        JPanel searchContainer = new JPanel();
+
+        searchContainer.setLayout(new BorderLayout());
+        searchContainer.add(searchPanel, BorderLayout.NORTH);
+        searchContainer.add(scrollPane, BorderLayout.CENTER);
+
+        jPanel.add(searchContainer, BorderLayout.CENTER);
     }
 
+    @Override
+    void setUserButton(ActionEvent e) {
+        new MainGUI(1, super.getUserController(), super.getFrame());
+    }
 
-    public JPanel getjPanel() {
+    private void setSearchButton(ActionEvent e) {
+        String keyword = searchTextfield.getText().trim();
+        jTable.setModel(Algorithm.search(keyword));
+        jTable.setAutoCreateRowSorter(true);
+    }
+
+    private void rowDoubleClicked(int id) {
+        new MainGUI(2, super.getUserController(), super.getFrame(), id);
+    }
+
+    JPanel getjPanel() {
         return jPanel;
     }
 }

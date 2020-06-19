@@ -1,9 +1,6 @@
 package MovieOperation;
 
 import UserOperation.ParserException;
-import UserOperation.UserAllController;
-import UserOperation.UserController;
-import UserOperation.UserControllerManager;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -22,11 +19,11 @@ public class MovieParser {
     private final String TOTALRATER = "numRating";
     private final String GENRE = "genre";
 
-    MovieParser() {
+    public MovieParser() {
         rawFile = new MovieFile();
     }
 
-    LinkedList<MovieObject> parseAll() throws ParserException {
+    public LinkedList<MovieObject> parseAll() throws ParserException {
         if (rawFile.isEmpty()) {
             throw new ParserException("file not found");
         }
@@ -55,6 +52,29 @@ public class MovieParser {
             }
         }
         return movieObjects;
+    }
+
+    public MovieObject parseSingle(String key) throws ParserException {
+        if (rawFile.isEmpty() || !rawFile.getFile().has(key)) {
+            throw new ParserException("file doesn't exist or key is invalid");
+        }
+
+        try {
+            JSONObject movieFile = rawFile.getFile();
+            JSONObject innerObject = movieFile.getJSONObject(key);
+            return new MovieObject(
+                    Integer.parseInt(key), parseMovieDetail(TITLE, innerObject),
+                    parseMovieDetail(DIRECTOR, innerObject),
+                    parseMovieDetail(DATE, innerObject),
+                    Float.parseFloat(parseMovieDetail(SCORE, innerObject)),
+                    Integer.parseInt(parseMovieDetail(TOTALRATER, innerObject)),
+                    parseGenre(innerObject)
+            );
+        } catch (JSONException ex) {
+            ex.printStackTrace();
+        }
+
+        throw new ParserException("unknown error");
     }
 
     private String parseMovieDetail(String keyword, JSONObject object) {

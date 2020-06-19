@@ -54,7 +54,6 @@ public class FileSkeleton {
         } catch (JSONException ex) {
             ex.printStackTrace();
         }
-        save();
     }
 
     private void save() {

@@ -8,11 +8,18 @@ public class Main {
         JFrame frame = new JFrame("testing");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Login login = new Login();
-        Search search = new Search();
-        frame.setPreferredSize(new Dimension(1280, 720));
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (IllegalAccessException | InstantiationException | UnsupportedLookAndFeelException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
 
-        frame.add(search.getjPanel());
-        frame.pack();
-        frame.setVisible(true);
+//        MainGUI mainGUI = new MainGUI();
+//        frame.setPreferredSize(new Dimension(1280, 720));
+//u
+//        frame.add(mainGUI.getjPanel());
+//        frame.pack();
+//        frame.setVisible(true);
+        login.run();
     }
 }

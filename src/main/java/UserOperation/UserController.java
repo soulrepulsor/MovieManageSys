@@ -18,47 +18,49 @@ public class UserController {
         new UserFileUpdater().informationUpate(userObject);
     }
 
-    void setUsername(String username) {
+    public String getUsername() { return userObject.getUsername();}
+
+    public void setUsername(String username) {
         userObject.setUsername(username);
     }
 
-    String getPassword() {
+    public String getPassword() {
         return userObject.getPassword();
     }
 
-    void setPassword(String password) {
+    public void setPassword(String password) {
         userObject.setPassword(password);
     }
 
-    String getEmail() {
+    public String getEmail() {
         return userObject.getEmail();
     }
 
-    void setEmail(String email) {
+    public void setEmail(String email) {
         userObject.setEmail(email);
     }
 
-    String getFirstName() {
+    public String getFirstName() {
         return userObject.getFirstName();
     }
 
-    void setFirstName(String firstName) {
+    public void setFirstName(String firstName) {
         userObject.setFirstName(firstName);
     }
 
-    String getLastName() {
+    public String getLastName() {
         return userObject.getLastName();
     }
 
-    void setLastName(String lastName) {
+    public void setLastName(String lastName) {
         userObject.setLastName(lastName);
     }
 
-    LinkedList<Integer> getWatchedMovies() {
+    public LinkedList<Integer> getWatchedMovies() {
         return userObject.getWatchedMovies();
     }
 
-    void setWatchedMovies(WatchedMoviesObject watchedMovies) {
+    public void setWatchedMovies(WatchedMoviesObject watchedMovies) {
         userObject.setWatchedMovies(watchedMovies);
     }
 }

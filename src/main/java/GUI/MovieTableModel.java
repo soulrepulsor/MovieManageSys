@@ -1,5 +1,7 @@
-package MovieOperation;
+package GUI;
 
+import MovieOperation.MovieObject;
+import MovieOperation.MovieParser;
 import UserOperation.ParserException;
 
 import javax.swing.table.AbstractTableModel;
@@ -20,6 +22,10 @@ public class MovieTableModel extends AbstractTableModel {
         }
     }
 
+    public MovieTableModel(ArrayList<MovieObject> movieObjects) {
+        this.movieObjects = movieObjects;
+    }
+
     public int getColumnCount() {
         return columnNames.length;
     }
@@ -35,12 +41,14 @@ public class MovieTableModel extends AbstractTableModel {
 
     public Object getValueAt(int row, int col) {
         Object result = null;
-
         if (col == 0) {
             result = movieObjects.get(row).getTitle();
         }
         else if (col == 1) {
             result = movieObjects.get(row).getDirector();
+        }
+        else if (col == -1) {
+            result = movieObjects.get(row).getId();
         }
 
         return result;
