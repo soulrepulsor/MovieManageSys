@@ -3,7 +3,7 @@ package UserOperation;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
-public class UserObject {
+class UserObject {
     private String username;
     private String password;
     private String email;

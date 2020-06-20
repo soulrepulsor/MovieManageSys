@@ -1,13 +1,10 @@
 package UserOperation;
-import java.io.FileReader;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.Map;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.xml.sax.Parser;
+
+import java.util.Iterator;
+import java.util.LinkedList;
 
 public class UserParser {
     private final String PASSWORD = "password";

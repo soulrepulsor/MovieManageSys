@@ -63,7 +63,8 @@ public class Login extends LoginSignupBaseGUI{
             authentication.authenticate();
             new MainGUI(0, username, super.getFrame());
         } catch (AuthenticationException ex){
-            ex.printStackTrace();
+            JOptionPane.showOptionDialog(null, ex.getMessage(), "Warning!", JOptionPane.DEFAULT_OPTION,
+                    JOptionPane.WARNING_MESSAGE, null, null, null);
         }
     }
 

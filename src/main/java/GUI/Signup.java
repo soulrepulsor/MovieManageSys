@@ -129,7 +129,8 @@ public class Signup extends LoginSignupBaseGUI {
             );
 
         } catch (Exception ex) {
-            ex.printStackTrace();
+            JOptionPane.showOptionDialog(null, ex.getMessage(), "Warning!", JOptionPane.DEFAULT_OPTION,
+                    JOptionPane.WARNING_MESSAGE, null, null, null);
             return;
         }
 
@@ -142,8 +143,12 @@ public class Signup extends LoginSignupBaseGUI {
                         firstName,
                         lastName
                 );
+                JOptionPane.showOptionDialog(null, "Register successfully!!!", "Success!", JOptionPane.DEFAULT_OPTION,
+                        JOptionPane.INFORMATION_MESSAGE, null, null, null);
+                new MainGUI(3, super.getFrame());
             } catch (Exception ex) {
-                ex.printStackTrace();
+                JOptionPane.showOptionDialog(null, ex.getMessage(), "Warning!", JOptionPane.DEFAULT_OPTION,
+                        JOptionPane.WARNING_MESSAGE, null, null, null);
             }
         }
 

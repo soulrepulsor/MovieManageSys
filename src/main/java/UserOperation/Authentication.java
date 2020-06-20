@@ -36,7 +36,6 @@ public class Authentication {
         try {
             UserObject userObject = userParser.parseSingle(username);
         } catch (ParserException ex) {
-            ex.printStackTrace();
             return false;
         }
         return true;
