@@ -31,4 +31,21 @@ public class Algorithm {
 
         return new MovieTableModel(searchResult);
     }
+
+    public static void registerFormCheck(
+            String username, String usernameConfirm,
+            String password, String passwordConfirm,
+            String email, String emailConfirm,
+            String firstName, String lastName) throws Exception {
+
+        if (email.isEmpty() || emailConfirm.isEmpty() || firstName.isEmpty() || lastName.isEmpty())
+            throw new Exception("Missing Field!");
+        else if (!username.equals(usernameConfirm))
+            throw new Exception("Username doesn't match");
+        else if (!password.equals(passwordConfirm))
+            throw new Exception("Password doesn't match");
+        else if (!email.equals(emailConfirm))
+            throw new Exception("Email doesn't match");
+
+    }
 }

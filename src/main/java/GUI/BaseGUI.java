@@ -13,6 +13,7 @@ public abstract class BaseGUI {
 
     BaseGUI(JFrame frame, UserController userController) {
         this.frame = frame;
+        this.frame.setResizable(true);
         jPanel = new JPanel();
         jPanel.setPreferredSize(new Dimension(800, 600));
         jPanel.setLayout(new BorderLayout(5, 5));
@@ -37,7 +38,7 @@ public abstract class BaseGUI {
     private void initSideGUI() {
         JPanel side = new JPanel();
         side.setLayout(new GridLayout(0, 1, 5, 5));
-        JButton mainButton = new JButton("Main");
+        JButton mainButton = new JButton("Search");
         JButton userButton = new JButton("User Info");
         JButton logoutButton = new JButton("Logout");
         side.add(mainButton);
@@ -55,9 +56,7 @@ public abstract class BaseGUI {
     void setUserButton(ActionEvent e){}
 
     void setLogoutButton(ActionEvent e) {
-        frame.dispose();
-        userController = null;
-        (new Login()).run();
+        new MainGUI(3, (UserController) null, frame);
     }
 
 }

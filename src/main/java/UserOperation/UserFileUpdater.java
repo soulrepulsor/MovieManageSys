@@ -32,6 +32,7 @@ public class UserFileUpdater {
                 object.setEmail(userObject.getEmail());
                 object.setFirstName(userObject.getFirstName());
                 object.setLastName(userObject.getLastName());
+                object.setWatchedMovies(new WatchedMoviesObject(userObject.getWatchedMovies()));
                 writeToFile();
                 return;
             }

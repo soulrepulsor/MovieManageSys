@@ -26,40 +26,24 @@ public class User extends BaseGUI {
         JPanel content = new JPanel();
         content.setLayout(new BorderLayout(5, 5));
 
-        JPanel usernamePanel = new JPanel();
-        usernamePanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 1));
-        JLabel usernameLabel = new JLabel("Username: ");
-        usernameLabel.setFont(new Font("Serif", Font.PLAIN, 25));
-        JLabel username = new JLabel(super.getUserController().getUsername());
-        username.setFont(new Font("Serif", Font.PLAIN, 25));
-        usernamePanel.add(usernameLabel);
-        usernamePanel.add(username);
+        JPanel panel = new JPanel(new SpringLayout());
 
-        JPanel fnamePanel = new JPanel();
-        fnamePanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 1));
-        JLabel firstnameLabel = new JLabel("First Name:");
-        firstnameLabel.setFont(new Font("Serif", Font.PLAIN, 25));
-        JLabel firstname = new JLabel(super.getUserController().getFirstName());
-        firstname.setFont(new Font("Serif", Font.PLAIN, 25));
-        fnamePanel.add(firstnameLabel);
-        fnamePanel.add(firstname);
+        String[] labels = {
+                "Username:", super.getUserController().getUsername(),
+                "Email:", super.getUserController().getEmail(),
+                "First Name:", super.getUserController().getFirstName(),
+                "Last Name:", super.getUserController().getLastName()
+        };
 
-        JPanel lnamePanel = new JPanel();
-        lnamePanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10,1));
-        JLabel lastnameLabel = new JLabel("Last Name:");
-        lastnameLabel.setFont(new Font("Serif", Font.PLAIN, 25));
-        JLabel lastname = new JLabel(super.getUserController().getLastName());
-        lastname.setFont(new Font("Serif", Font.PLAIN, 25));
-        lnamePanel.add(lastnameLabel);
-        lnamePanel.add(lastname);
+        for (int i = 0; i < labels.length; i++ ) {
+            JLabel label = new JLabel(labels[i]);
+            int size = i % 2 == 0 ? 20 : 18;
+            label.setFont(new Font("Serif", Font.PLAIN, size));
+            panel.add(label);
+        }
 
-        JPanel userinfoPanel = new JPanel();
-        userinfoPanel.setLayout(new GridLayout(3,1));
-        userinfoPanel.add(usernamePanel);
-        userinfoPanel.add(fnamePanel);
-        userinfoPanel.add(lnamePanel);
-
-        content.add(userinfoPanel, BorderLayout.NORTH);
+        SpringUtilities.makeCompactGrid(panel, labels.length / 2, 2, 0, 0, 50, 10);
+        content.add(panel, BorderLayout.NORTH);
 
         MovieTableModel movieTableModel = new MovieTableModel(
                 initTable(super.getUserController().getWatchedMovies()));

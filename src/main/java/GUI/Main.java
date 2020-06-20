@@ -1,13 +1,12 @@
 package GUI;
 
 import javax.swing.*;
-import java.awt.*;
 
 public class Main {
     public static void main(String[] args) {
         JFrame frame = new JFrame("testing");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        Login login = new Login();
+        LoginTemp login = new LoginTemp();
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (IllegalAccessException | InstantiationException | UnsupportedLookAndFeelException | ClassNotFoundException e) {
@@ -20,6 +19,6 @@ public class Main {
 //        frame.add(mainGUI.getjPanel());
 //        frame.pack();
 //        frame.setVisible(true);
-        login.run();
+        new MainGUI(3, null);
     }
 }

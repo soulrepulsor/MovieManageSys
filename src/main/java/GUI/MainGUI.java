@@ -6,7 +6,6 @@ import UserOperation.UserController;
 import UserOperation.UserControllerManager;
 
 import javax.swing.*;
-import java.awt.*;
 
 public class MainGUI {
     private JPanel jPanel;
@@ -18,14 +17,12 @@ public class MainGUI {
         userController = UserControllerManager.getUserController(username);
         this.frame = frame;
         init(status);
-        run();
     }
 
     MainGUI(int status, UserController userController, JFrame frame) {
         this.userController = userController;
         this.frame = frame;
         init(status);
-        run();
     }
 
     MainGUI(int status, UserController userController, JFrame frame, int movieId) {
@@ -33,7 +30,11 @@ public class MainGUI {
         this.userController = userController;
         this.frame = frame;
         init(status);
-        run();
+    }
+
+    MainGUI(int status, JFrame frame) {
+        this.frame = (frame == null) ? new JFrame() : frame;
+        init(status);
     }
 
     private void refreshFrame() {
@@ -56,9 +57,19 @@ public class MainGUI {
                 frame.setTitle("Movie Description");
                 jPanel = (new Movie(userController, frame, movieController)).getjPanel();
                 break;
+            case 3:
+                frame.setTitle("Login");
+                jPanel = (new Login(frame).getjPanel());
+                break;
+            case 4:
+                frame.setTitle("Sign Up");
+                jPanel = (new Signup(frame).getjPanel());
+                break;
             default:
                 System.exit(0);
         }
+
+        run();
     }
 
     private void run() {
