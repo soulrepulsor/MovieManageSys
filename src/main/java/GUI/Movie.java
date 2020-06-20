@@ -1,11 +1,17 @@
 package GUI;
 
+import Algorithm.Algorithm;
 import MovieOperation.MovieController;
 import UserOperation.UserController;
 
 import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class Movie extends BaseGUI {
@@ -60,21 +66,51 @@ public class Movie extends BaseGUI {
 
         SpringUtilities.makeCompactGrid(panel, labels.length / 2 + 1, 2, 0, 0, 50, 10);
 
-        JPanel buttonContainer = new JPanel(new FlowLayout(FlowLayout.CENTER));
         JButton saveButton = new JButton("Save");
         saveButton.addActionListener(this::setSaveButton);
-        buttonContainer.add(saveButton);
+
+        JPanel gridContainer = new JPanel(new GridBagLayout());
+        GridBagConstraints c = new GridBagConstraints();
+
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.anchor = GridBagConstraints.FIRST_LINE_START;
+        c.gridx = 0;
+        c.gridy = 0;
+        gridContainer.add(panel, c);
+
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.anchor = GridBagConstraints.CENTER;
+        c.gridx = 0;
+        c.gridy = 1;
+        gridContainer.add(saveButton, c);
 
         JPanel content = new JPanel();
         content.setLayout(new BorderLayout(5, 5));
 
-        content.add(new JPanel(), BorderLayout.NORTH);
-        content.add(new JPanel(), BorderLayout.EAST);
         content.add(new JPanel(), BorderLayout.WEST);
-        content.add(panel, BorderLayout.CENTER);
-        content.add(buttonContainer, BorderLayout.SOUTH);
+        content.add(new JPanel(), BorderLayout.SOUTH);
+
+        MovieTableModel movieTableModel = new MovieTableModel(Algorithm.recommendation(movieController));
+        JTable jTable = new JTable(movieTableModel);
+        jTable.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (e.getClickCount() == 2) {
+                    JTable target = (JTable) e.getSource();
+                    int row = target.getSelectedRow();
+                    rowDoubleClicked((Integer) target.getValueAt(row, -1));
+                }
+            }
+        });
+        jTable.setAutoCreateRowSorter(true);
+        JScrollPane scrollPane = new JScrollPane(jTable);
+        scrollPane.setBorder(new TitledBorder("Recommendation"));
+
+        content.add(gridContainer, BorderLayout.NORTH);
+        content.add(scrollPane, BorderLayout.CENTER);
 
         jPanel.add(content, BorderLayout.CENTER);
+
     }
 
     @Override
@@ -87,21 +123,23 @@ public class Movie extends BaseGUI {
         new MainGUI(1, super.getUserController(), super.getFrame());
     }
 
-    void setSaveButton(ActionEvent e) {
+    private void setSaveButton(ActionEvent e) {
         super.getUserController().updateToFile();
     }
 
-    void actionPerformed(ActionEvent e) {
+    private void actionPerformed(ActionEvent e) {
         LinkedList<Integer> linkedList = super.getUserController().getWatchedMovies();
         int id = movieController.getId();
         int selected = watchedOption.getSelectedIndex();
         if (selected == 0 && !linkedList.contains(id)) {
             linkedList.add(id);
             super.getUserController().setWatchedMovies(linkedList);
-        }
-        else if (selected == 1 && linkedList.contains(id)) {
+        } else if (selected == 1 && linkedList.contains(id)) {
             linkedList.remove(Integer.valueOf(id));
         }
+    }
 
+    private void rowDoubleClicked(int id) {
+        new MainGUI(2, super.getUserController(), super.getFrame(), id);
     }
 }

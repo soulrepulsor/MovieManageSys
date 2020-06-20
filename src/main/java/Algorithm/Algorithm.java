@@ -5,6 +5,7 @@ import MovieOperation.MovieController;
 import MovieOperation.MovieControllerManager;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedList;
 
 public class Algorithm {
@@ -43,7 +44,31 @@ public class Algorithm {
             throw new Exception("Email doesn't match");
     }
 
-    public static ArrayList<MovieController> recommendation(LinkedList<String> genreList) {
-        return null;
+    public static ArrayList<MovieController> recommendation(MovieController movieController) {
+        LinkedList<MovieController> movieControllers =
+                MovieControllerManager.getMovieAllController().getMovieControllers();
+
+        ArrayList<MovieController> match = new ArrayList<>();
+
+        for (MovieController controller : movieControllers) {
+            int count = 0;
+            if (controller.getId() != movieController.getId()) {
+                for (String genre : movieController.getGenreObject()) {
+                    if (controller.getGenreObject().contains(genre))
+                        count++;
+                    if (count >= 2)
+                        match.add(controller);
+                    break;
+                }
+            }
+        }
+
+        if (match.size() <= 10)
+            return match;
+
+        Collections.shuffle(match);
+        match.subList(0, 10);
+
+        return match;
     }
 }
