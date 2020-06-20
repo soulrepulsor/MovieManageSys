@@ -3,6 +3,9 @@ package UserOperation;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
+/**
+ * Each user's information that is labelled according to its JSON format
+ */
 class UserObject {
     private String username;
     private String password;

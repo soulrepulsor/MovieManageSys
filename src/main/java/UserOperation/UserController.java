@@ -2,6 +2,10 @@ package UserOperation;
 
 import java.util.LinkedList;
 
+/**
+ * This class functions like a middleware between the GUI and the User class. It functions exactly like User class but
+ * hides the User Object away from the GUI.
+ */
 public class UserController {
     private UserObject userObject;
 

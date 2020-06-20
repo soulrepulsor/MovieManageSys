@@ -25,6 +25,10 @@ public class UserFileUpdater {
         }
     }
 
+    /**
+     * update the UserObject's information to file
+     * @param userObject user's UserObject
+     */
     void informationUpate(UserObject userObject) {
         for (UserObject object : userObjects) {
             if (object.getUsername().equals(userObject.getUsername())) {
@@ -39,6 +43,9 @@ public class UserFileUpdater {
         }
     }
 
+    /**
+     * Write the information to the file
+     */
     private void writeToFile() {
         JSONObject result = new JSONObject();
         for (UserObject object : userObjects) {
@@ -52,6 +59,11 @@ public class UserFileUpdater {
         file.insertAll(result);
     }
 
+    /**
+     * convert UserObject to JSONObject
+     * @param userObject inputted UserObject
+     * @return user information in a Json Object representation
+     */
     private JSONObject toJSONObject(UserObject userObject) {
         JSONObject innerObject = new JSONObject();
 

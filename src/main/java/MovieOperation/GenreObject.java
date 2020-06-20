@@ -2,6 +2,9 @@ package MovieOperation;
 
 import java.util.LinkedList;
 
+/**
+ * Each genre's information that is labelled according to its JSON format
+ */
 class GenreObject {
     private LinkedList<String> genre;
 

@@ -5,6 +5,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -16,13 +17,19 @@ class MovieParser {
     private final String DIRECTOR = "director";
     private final String DATE = "released";
     private final String SCORE = "score";
-    private final String TOTALRATER = "numRating";
     private final String GENRE = "genre";
+    private final String IMG = "img";
+    private final String DURATION = "duration";
 
     MovieParser() {
         rawFile = new MovieFile();
     }
 
+    /**
+     * Parse all of the movie's keys
+     * @return list of movie's keys
+     * @throws ParserException file doesn't exist or the key is invalid
+     */
     LinkedList<String> parseKeys() throws ParserException {
         if (rawFile.isEmpty())
             throw new ParserException("file doesn't exist or key is invalid");
@@ -34,6 +41,11 @@ class MovieParser {
         return result;
     }
 
+    /**
+     * Parse all of the movie's information
+     * @return list of movie's information in the representation of UserObject
+     * @throws ParserException file not found
+     */
     LinkedList<MovieObject> parseAll() throws ParserException {
         if (rawFile.isEmpty()) {
             throw new ParserException("file not found");
@@ -50,12 +62,13 @@ class MovieParser {
 
                 movieObjects.add(
                         new MovieObject(
-                            Integer.parseInt(key), parseMovieDetail(TITLE, details),
-                                parseMovieDetail(DIRECTOR, details),
+                                Integer.parseInt(key), parseMovieDetail(TITLE, details),
+                                parseDirector(details),
                                 parseMovieDetail(DATE, details),
                                 Float.parseFloat(parseMovieDetail(SCORE, details)),
-                                Integer.parseInt(parseMovieDetail(TOTALRATER, details)),
-                                parseGenre(details)
+                                parseMovieDetail(DURATION, details),
+                                parseGenre(details),
+                                parseMovieDetail(IMG, details)
                         )
                 );
             } catch (JSONException | NumberFormatException ex) {
@@ -65,6 +78,12 @@ class MovieParser {
         return movieObjects;
     }
 
+    /**
+     * Parse a single movie's information
+     * @param key movie's specific key
+     * @return parsed movie information in the representation of UserObject
+     * @throws ParserException file doesn't exist or key is invalid
+     */
     MovieObject parseSingle(String key) throws ParserException {
         if (rawFile.isEmpty() || !rawFile.getFile().has(key)) {
             throw new ParserException("file doesn't exist or key is invalid");
@@ -72,14 +91,15 @@ class MovieParser {
 
         try {
             JSONObject movieFile = rawFile.getFile();
-            JSONObject innerObject = movieFile.getJSONObject(key);
+            JSONObject details = movieFile.getJSONObject(key);
             return new MovieObject(
-                    Integer.parseInt(key), parseMovieDetail(TITLE, innerObject),
-                    parseMovieDetail(DIRECTOR, innerObject),
-                    parseMovieDetail(DATE, innerObject),
-                    Float.parseFloat(parseMovieDetail(SCORE, innerObject)),
-                    Integer.parseInt(parseMovieDetail(TOTALRATER, innerObject)),
-                    parseGenre(innerObject)
+                    Integer.parseInt(key), parseMovieDetail(TITLE, details),
+                    parseDirector(details),
+                    parseMovieDetail(DATE, details),
+                    Float.parseFloat(parseMovieDetail(SCORE, details)),
+                    parseMovieDetail(DURATION, details),
+                    parseGenre(details),
+                    parseMovieDetail(IMG, details)
             );
         } catch (JSONException ex) {
             ex.printStackTrace();
@@ -88,6 +108,12 @@ class MovieParser {
         throw new ParserException("unknown error");
     }
 
+    /**
+     * Parse movie's stored information
+     * @param keyword the key of movie's stored information
+     * @param object the Json Object that stores the movie's information
+     * @return the details of a specific movie information
+     */
     private String parseMovieDetail(String keyword, JSONObject object) {
         if (object.has(keyword)) {
             try {
@@ -99,16 +125,40 @@ class MovieParser {
         return null;
     }
 
+    /**
+     * parse the genres of a movie
+     * @param jsonObject the Json object that stores the movie's genres
+     * @return a GenreObject that stores the the movie's genres
+     */
     private GenreObject parseGenre(JSONObject jsonObject) {
         try {
-            return new GenreObject(jsonArrayToGenre(jsonObject.getJSONArray(GENRE)));
+            return new GenreObject(jsonArrayToList(jsonObject.getJSONArray(GENRE)));
         } catch (JSONException ex) {
             ex.printStackTrace();
         }
         return null;
     }
 
-    private LinkedList<String> jsonArrayToGenre(JSONArray jsonArray) {
+    /**
+     * parse the directory of a movie
+     * @param jsonObject the Json object that stores the movie's directory
+     * @return a ScoreObject that stores the the movie's directory
+     */
+    private ArrayList<String> parseDirector(JSONObject jsonObject) {
+        try {
+            return new ArrayList<>(jsonArrayToList(jsonObject.getJSONArray(DIRECTOR)));
+        } catch (JSONException ex) {
+            ex.printStackTrace();
+        }
+        return null;
+    }
+
+    /**
+     * Convert JsonArray to LinkedList of String
+     * @param jsonArray jsonArray
+     * @return List of String in a LinkedList representation
+     */
+    private LinkedList<String> jsonArrayToList(JSONArray jsonArray) {
         LinkedList<String> result = new LinkedList<>();
         try {
             for (int i = 0; i < jsonArray.length(); i++)

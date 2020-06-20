@@ -9,6 +9,10 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.util.LinkedList;
 
+/**
+ * This class creates a panel that when it renders, it shows the necessary components of the sign up screen.
+ * Extends the LoginSignupBaseGUI class so it doesn't need to re initializes the size..
+ */
 public class Signup extends LoginSignupBaseGUI {
     private JTextField usernameTextfield;
     private JTextField usernameConfirm;

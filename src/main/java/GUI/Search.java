@@ -9,6 +9,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+/**
+ * This class creates a panel that when it renders, it shows the necessary components of a search menu.
+ * Extends the BaseGUI class so it doesn't need to re initializes the menu screen, as well as rewiring the events.
+ */
 public class Search extends BaseGUI {
     private JPanel jPanel;
     private JTextField searchTextfield;

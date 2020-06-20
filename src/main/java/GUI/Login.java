@@ -7,6 +7,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 
+/**
+ * This class creates a panel that when it renders, it shows the necessary components of the login screen.
+ * Extends the LoginSignupBaseGUI class so it doesn't need to re initializes the size..
+ */
 public class Login extends LoginSignupBaseGUI{
     private JTextField usernameTextfield;
     private JPasswordField passwordTextfield;

@@ -2,18 +2,25 @@ package GUI;
 
 import Algorithm.Algorithm;
 import MovieOperation.MovieController;
+import Resources.Dummy;
 import UserOperation.UserController;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.LinkedList;
 
+/**
+ * This class creates a panel that when it renders, it shows the necessary components of the selected movie info.
+ * Extends the BaseGUI class so it doesn't need to re initializes the menu screen, as well as rewiring the events.
+ */
 public class Movie extends BaseGUI {
     private MovieController movieController;
     private JPanel jPanel;
@@ -28,19 +35,23 @@ public class Movie extends BaseGUI {
 
     private void initContent() {
         String genreListing = movieController.getGenreObject().toString();
+        String directorListing = movieController.getDirector().toString();
         try {
             genreListing = genreListing.substring(1, genreListing.length() - 1);
+            directorListing = directorListing.substring(1, directorListing.length() - 1);
         } catch (NullPointerException ex) {
             ex.printStackTrace();
             genreListing = "N\\A";
+            directorListing = "N\\A";
         }
 
         String[] labels = {
                 "Title:", movieController.getTitle(),
-                "Director:", movieController.getDirector(),
+                "Director:", directorListing,
                 "Released Date:", movieController.getReleased(),
                 "Score:", String.valueOf(movieController.getScore()),
                 "Genre:", genreListing,
+                "Duration", String.valueOf(movieController.getDuration()),
                 "Watched:"
         };
 
@@ -77,6 +88,25 @@ public class Movie extends BaseGUI {
         c.gridx = 0;
         c.gridy = 0;
         gridContainer.add(panel, c);
+
+        JPanel container = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        JLabel pic = new JLabel();
+        pic.setPreferredSize(new Dimension(168, 250));
+        BufferedImage img = null;
+        try {
+            img = ImageIO.read(new File(Dummy.class.getResource("img/" + movieController.getImg() + ".jpg").getFile()));
+            Image dimg = img.getScaledInstance(pic.getPreferredSize().width, pic.getPreferredSize().height, Image.SCALE_SMOOTH);
+            ImageIcon imageIcon = new ImageIcon(dimg);
+            pic.setIcon(imageIcon);
+            container.add(pic);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.anchor = GridBagConstraints.FIRST_LINE_END;
+        c.gridx = 1;
+        c.gridy = 0;
+        gridContainer.add(container, c);
 
         c.fill = GridBagConstraints.HORIZONTAL;
         c.anchor = GridBagConstraints.CENTER;

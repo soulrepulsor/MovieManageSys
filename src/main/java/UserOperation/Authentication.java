@@ -12,6 +12,11 @@ public class Authentication {
         this.password = password;
     }
 
+    /**
+     * Authenticate if the inputted information matches any of the stored user record
+     * @throws AuthenticationException throws when the user/password is incorrect or the
+     * required entered field is empty
+     */
     public void authenticate() throws AuthenticationException {
         if (username.isEmpty() || password.isEmpty())
             throw new AuthenticationException("Username or password is empty!");
@@ -32,6 +37,10 @@ public class Authentication {
         throw authenticationException;
     }
 
+    /**
+     * Check if the user exists
+     * @return true if the user exists and vice versa
+     */
     public boolean doesUserExist() {
         try {
             UserObject userObject = userParser.parseSingle(username);

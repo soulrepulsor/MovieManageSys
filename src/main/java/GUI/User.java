@@ -13,6 +13,10 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
+/**
+ * This class creates a panel that when it renders, it shows the necessary components of the current login's user's info.
+ * Extends the BaseGUI class so it doesn't need to re initializes the menu screen, as well as rewiring the events.
+ */
 public class User extends BaseGUI {
     private JPanel jPanel;
 

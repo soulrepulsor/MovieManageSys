@@ -8,6 +8,10 @@ import javax.swing.table.AbstractTableModel;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
+/**
+ * This is a custom class which allows the movie's info to be displayed easily in terms of a JTable, by passing the
+ * movie controllers.
+ */
 public class MovieTableModel extends AbstractTableModel {
     private String[] columnNames = {"Title", "Director"};
     private ArrayList<MovieController> movieObjects;
@@ -40,7 +44,14 @@ public class MovieTableModel extends AbstractTableModel {
             result = movieObjects.get(row).getTitle();
         }
         else if (col == 1) {
-            result = movieObjects.get(row).getDirector();
+            String directorListing = movieObjects.get(row).getDirector().toString();
+            try {
+                directorListing = directorListing.substring(1, directorListing.length() - 1);
+            } catch (NullPointerException ex) {
+                ex.printStackTrace();
+                directorListing = "N\\A";
+            }
+            result = directorListing;
         }
         else if (col == -1) {
             result = movieObjects.get(row).getId();

@@ -3,6 +3,9 @@ package GUI;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * This class serves as the base configuration class for the login and Sign Up screen
+ */
 abstract class LoginSignupBaseGUI {
     private JPanel jPanel;
     private JFrame frame;

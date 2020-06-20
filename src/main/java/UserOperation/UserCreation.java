@@ -6,6 +6,16 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class UserCreation {
+
+    /**
+     * Creates new user
+     * @param username inputted username
+     * @param password inputted password
+     * @param email inputted email
+     * @param fname inputted first name
+     * @param lname inputted last name
+     * @throws Exception username is taken
+     */
     public static void InitializeNewUser(
             String username, String password, String email,
             String fname, String lname) throws Exception {

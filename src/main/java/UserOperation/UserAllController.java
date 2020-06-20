@@ -2,6 +2,10 @@ package UserOperation;
 
 import java.util.LinkedList;
 
+/**
+ * Stores all of the UserController Class instances. In other words this class stores an unique instance of a user
+ * controller for all users.
+ */
 public class UserAllController {
     private LinkedList<UserController> userControllers;
 

@@ -7,6 +7,12 @@ import UserOperation.UserControllerManager;
 
 import javax.swing.*;
 
+/**
+ * This class functions like an event loop. The same JFrame is passed into each of the specialized GUI's class.
+ * As a result, the window is never closed, but the panel can always be changed forever based on the status code that's
+ * passed through the constructor.
+ */
+
 public class MainGUI {
     private JPanel jPanel;
     private JFrame frame;

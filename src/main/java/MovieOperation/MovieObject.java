@@ -1,24 +1,27 @@
 package MovieOperation;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 class MovieObject {
     private int id;
+    private String img;
     private String title;
-    private String director;
+    private ArrayList<String> director;
     private String released;
     private float score;
-    private int numRating;
     private GenreObject genreObject;
+    private String duration;
 
-    MovieObject(int id, String title, String director, String released, float score, int numRating, GenreObject genreObject) {
+    MovieObject(int id, String title, ArrayList<String> director, String released, float score, String duration, GenreObject genreObject, String img) {
         this.id = id;
         this.title = title;
         this.director = director;
         this.released = released;
         this.score = score;
-        this.numRating = numRating;
         this.genreObject = genreObject;
+        this.duration = duration + " min";
+        this.img = img;
     }
 
     int getId() {
@@ -29,6 +32,22 @@ class MovieObject {
         this.id = id;
     }
 
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
+
+    public String getDuration() {
+        return duration;
+    }
+
+    public void setDuration(String duration) {
+        this.duration = duration + " min";
+    }
+
     String getTitle() {
         return title;
     }
@@ -37,11 +56,11 @@ class MovieObject {
         this.title = title;
     }
 
-    String getDirector() {
+    ArrayList<String> getDirector() {
         return director;
     }
 
-    void setDirector(String director) {
+    void setDirector(ArrayList<String> director) {
         this.director = director;
     }
 
@@ -59,14 +78,6 @@ class MovieObject {
 
     void setScore(float score) {
         this.score = score;
-    }
-
-    int getNumRating() {
-        return numRating;
-    }
-
-    void setNumRating(int numRating) {
-        this.numRating = numRating;
     }
 
     LinkedList<String> getGenreObject() {

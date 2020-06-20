@@ -6,6 +6,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 
+/**
+ * This class serves as the base configuration class for the Main Menu screen that is used by the Search,
+ * User and Movie GUI class
+ */
 public abstract class BaseGUI {
     private JFrame frame;
     private JPanel jPanel;

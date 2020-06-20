@@ -2,8 +2,13 @@ package MovieOperation;
 
 import UserOperation.ParserException;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
+/**
+ * This class functions like a middleware between the GUI and the MovieObject class. It functions exactly like MovieObject class but
+ * hides the Movie Object away from the GUI.
+ */
 public class MovieController {
     private MovieObject movieObject;
 
@@ -24,7 +29,7 @@ public class MovieController {
         return movieObject.getTitle();
     }
 
-    public String getDirector() {
+    public ArrayList<String> getDirector() {
         return movieObject.getDirector();
     }
 
@@ -36,11 +41,15 @@ public class MovieController {
         return movieObject.getScore();
     }
 
-    public int getNumRating() {
-        return movieObject.getNumRating();
-    }
-
     public LinkedList<String> getGenreObject() {
         return movieObject.getGenreObject();
+    }
+
+    public String getImg() {
+        return movieObject.getImg();
+    }
+
+    public String getDuration() {
+        return movieObject.getDuration();
     }
 }

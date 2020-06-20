@@ -1,23 +1,591 @@
 {
-  "1" : {
-    "title": "TESTING",
-    "director": "PLACEHOLDER",
-    "released": "10/6/2020",
-    "score": "10.0",
-    "numRating": "1",
-    "genre": [
-      "A",
-      "B",
-      "C"
-    ]
-  },
-  "2": {
-    "title": "TESTING",
-    "director": "srithjsiortj",
-    "released": "20/4/2020",
-    "score": "10.0",
-    "numRating": "10",
-    "genre": [
-    ]
-  }
+    "22": {
+        "duration": "122",
+        "score": "8.1",
+        "img": "img22",
+        "director": ["Celine Sciamma"],
+        "genre": [
+            "Drama",
+            "Romance"
+        ],
+        "title": "Portrait of a Lady on Fire",
+        "released": "14 February 2020"
+    },
+    "44": {
+        "duration": "169",
+        "score": "7.3",
+        "img": "img44",
+        "director": ["Marielle Heller"],
+        "genre": [
+            "Biography",
+            "Drama"
+        ],
+        "title": "A Beautiful Day in the Neighborhood",
+        "released": "22 November 2019"
+    },
+    "23": {
+        "duration": "120",
+        "score": "6.5",
+        "img": "img23",
+        "director": ["Joanna Hogg"],
+        "genre": [
+            "Drama",
+            "Mystery",
+            "Romance"
+        ],
+        "title": "The Souvenir",
+        "released": "30 August 2019"
+    },
+    "45": {
+        "duration": "170",
+        "score": "6.3",
+        "img": "img45",
+        "director": ["Lorene Scafaria"],
+        "genre": [
+            "Crime",
+            "Comedy",
+            "Drama"
+        ],
+        "title": "Hustlers",
+        "released": "13 September 2019"
+    },
+    "24": {
+        "duration": "168",
+        "score": "7.9",
+        "img": "img24",
+        "director": ["Taiki Waititi"],
+        "genre": [
+            "Comedy",
+            "Drama",
+            "War"
+        ],
+        "title": "Jojo Rabbit",
+        "released": "8 November 2019"
+    },
+    "25": {
+        "duration": "130",
+        "score": "7.5",
+        "img": "img25",
+        "director": ["Chad Stahelski"],
+        "genre": [
+            "Action",
+            "Crime",
+            "Thriller"
+        ],
+        "title": "John Wick: Chapter 3 - Parabellum",
+        "released": "17 May 2019"
+    },
+    "26": {
+        "duration": "128",
+        "score": "7.0",
+        "img": "img26",
+        "director": ["Guy Ritchie"],
+        "genre": [
+            "Adventure",
+            "Family",
+            "Fantasy"
+        ],
+        "title": "Aladdin",
+        "released": "24 May 2019"
+    },
+    "27": {
+        "duration": "122",
+        "score": "7.3",
+        "img": "img27",
+        "director": ["Robert Rodriguez"],
+        "genre": [
+            "Action",
+            "Adventure",
+            "Sci-Fi"
+        ],
+        "title": "Alita: Battle Angel",
+        "released": "14 February 2019"
+    },
+    "28": {
+        "duration": "132",
+        "score": "6.0",
+        "img": "img28",
+        "director": ["Michael Dougherty"],
+        "genre": [
+            "Action",
+            "Adventure",
+            "Sci-Fi"
+        ],
+        "title": "Godzilla: King of Monsters",
+        "released": "31 May 2019"
+    },
+    "29": {
+        "duration": "169",
+        "score": "6.6",
+        "img": "img29",
+        "director": ["Andy Muschietti"],
+        "genre": [
+            "Drama",
+            "Fantasy",
+            "Horror"
+        ],
+        "title": "It: Chapter Two",
+        "released": "6 September 2019"
+    },
+    "30": {
+        "duration": "153",
+        "score": "7.4",
+        "img": "img30",
+        "director": ["Mike Flanagan"],
+        "genre": [
+            "Drama",
+            "Fantasy",
+            "Horror"
+        ],
+        "title": "Doctor Sleep",
+        "released": "8 November 2019"
+    },
+    "31": {
+        "duration": "174",
+        "score": "7.4",
+        "img": "img31",
+        "director": ["Terrence Malick"],
+        "genre": [
+            "Biography",
+            "Drama",
+            "Romance"
+        ],
+        "title": "A Hidden Life",
+        "released": "17 January 2020"
+    },
+    "10": {
+        "duration": "100",
+        "score": "7.8",
+        "img": "img10",
+        "director": ["Josh Cooley"],
+        "genre": [
+            "Animation",
+            "Adventure",
+            "Comedy"
+        ],
+        "title": "Toy Story 4",
+        "released": "21 June 2019"
+    },
+    "32": {
+        "duration": "162",
+        "score": "7.0",
+        "img": "img32",
+        "director": ["Alejandro Landes"],
+        "genre": [
+            "Adventure",
+            "Drama",
+            "Thriller"
+        ],
+        "title": "Monos",
+        "released": "15 August 2019"
+    },
+    "11": {
+        "duration": "102",
+        "score": "7.2",
+        "img": "img11",
+        "director": ["Olivia Wilde"],
+        "genre": [
+            "Comedy",
+            "Romance"
+        ],
+        "title": "Booksmart",
+        "released": "24 May 2019"
+    },
+    "33": {
+        "duration": "173",
+        "score": "5.8",
+        "img": "img33",
+        "director": ["Simon Kinberg"],
+        "genre": [
+            "Action",
+            "Adventure",
+            "Sci-Fi"
+        ],
+        "title": "Xmen: Dark Phoenix",
+        "released": "7 June 2019"
+    },
+    "12": {
+        "duration": "142",
+        "score": "6.7",
+        "img": "img12",
+        "director": ["J.J. Abrams"],
+        "genre": [
+            "Action",
+            "Adventure",
+            "Fantasy"
+        ],
+        "title": "Star Wars: The Rise of Skywalker",
+        "released": "20 December 2019"
+    },
+    "34": {
+        "duration": "164",
+        "score": "7.5",
+        "img": "img34",
+        "director": ["Dean Deblois"],
+        "genre": [
+            "Animation",
+            "Action",
+            "Adventure"
+        ],
+        "title": "How to Train Your Dragon: The Hidden World",
+        "released": "22 February 2019"
+    },
+    "13": {
+        "duration": "148",
+        "score": "7.1",
+        "img": "img13",
+        "director": ["Ari Aster"],
+        "genre": [
+            "Drama",
+            "Horror",
+            "Mystery"
+        ],
+        "title": "Midsommar",
+        "released": "3 July 2019"
+    },
+    "35": {
+        "duration": "137",
+        "score": "6.4",
+        "img": "img35",
+        "director": ["David Leitch"],
+        "genre": [
+            "Action",
+            "Adventure",
+            "Thriller"
+        ],
+        "title": "Fast & Furious Presents: Hobbs & Shaw",
+        "released": "2 August 2019"
+    },
+    "14": {
+        "duration": "123",
+        "score": "6.9",
+        "img": "img14",
+        "director": [
+            "Anna Boden",
+            " Ryan Fleck"
+        ],
+        "genre": [
+            "Action",
+            "Adventure",
+            "Sci-Fi"
+        ],
+        "title": "Captain Marvel",
+        "released": "8 March 2019"
+    },
+    "36": {
+        "duration": "162",
+        "score": "6.6",
+        "img": "img36",
+        "director": ["Rob Letterman"],
+        "genre": [
+            "Adventure",
+            "Comedy",
+            "Family"
+        ],
+        "title": "Pokemon Detective Pikachu",
+        "released": "10 May 2019"
+    },
+    "15": {
+        "duration": "121",
+        "score": "7.3",
+        "img": "img15",
+        "director": ["Dexter Fletcher"],
+        "genre": [
+            "Biography",
+            "Drama",
+            "Music"
+        ],
+        "title": "Rocketman",
+        "released": "31 May 2019"
+    },
+    "37": {
+        "duration": "159",
+        "score": "6.7",
+        "img": "img37",
+        "director": ["Ruben Fleisher"],
+        "genre": [
+            "Action",
+            "Comedy",
+            "Horror"
+        ],
+        "title": "Zombieland: Double Tap",
+        "released": "18 October 2019"
+    },
+    "16": {
+        "duration": "123",
+        "score": "6.6",
+        "img": "img16",
+        "director": ["James Gray"],
+        "genre": [
+            "Adventure",
+            "Drama",
+            "Mystery"
+        ],
+        "title": "Ad Astra",
+        "released": "20 September 2019"
+    },
+    "38": {
+        "duration": "177",
+        "score": "5.7",
+        "img": "img38",
+        "director": ["Ang Lee"],
+        "genre": [
+            "Action",
+            "Drama",
+            "Sci-Fi"
+        ],
+        "title": "Gemini Man",
+        "released": "11 October 2019"
+    },
+    "17": {
+        "duration": "135",
+        "score": "7.5",
+        "img": "img17",
+        "director": [
+            "Benny Safdie",
+            " Josh Safdie"
+        ],
+        "genre": [
+            "Crime",
+            "Drama",
+            "Thriller"
+        ],
+        "title": "Uncut Gems",
+        "released": "25 December 2019"
+    },
+    "39": {
+        "duration": "179",
+        "score": "6.6",
+        "img": "img39",
+        "director": ["Joachim Ronning"],
+        "genre": [
+            "Adventure",
+            "Family",
+            "Fantasy"
+        ],
+        "title": "Maleficent: Mistress of Evil",
+        "released": "18 October 2019"
+    },
+    "18": {
+        "duration": "163",
+        "score": "6.9",
+        "img": "img18",
+        "director": [
+            "Chris Buck",
+            " Jeniffer Lee"
+        ],
+        "genre": [
+            "Animation",
+            "Adventure",
+            "Comedy"
+        ],
+        "title": "Frozen 2",
+        "released": "22 November 2019"
+    },
+    "19": {
+        "duration": "129",
+        "score": "7.5",
+        "img": "img19",
+        "director": ["Jon Watts"],
+        "genre": [
+            "Action",
+            "Adventure",
+            "Sci-Fi"
+        ],
+        "title": "Spiderman: Far From Home",
+        "released": "2 July 2019"
+    },
+    "1": {
+        "duration": "181",
+        "score": "8.4",
+        "img": "img1",
+        "director": [
+            "Anthony Russo",
+            " Joe Russo"
+        ],
+        "genre": [
+            "Action",
+            "Adventure",
+            "Drama"
+        ],
+        "title": "Avengers: Endgame",
+        "released": "26 April 2019"
+    },
+    "2": {
+        "duration": "209",
+        "score": "7.9",
+        "img": "img2",
+        "director": ["Martin Scorsese"],
+        "genre": [
+            "Biography",
+            "Crime",
+            "Drama"
+        ],
+        "title": "The Irishman",
+        "released": "27 November 2019"
+    },
+    "3": {
+        "duration": "161",
+        "score": "7.7",
+        "img": "img3",
+        "director": ["Quentin Tarantino"],
+        "genre": [
+            "Comedy",
+            "Drama"
+        ],
+        "title": "Once Upon a Time In Hollywood",
+        "released": "26 July 2019"
+    },
+    "4": {
+        "duration": "172",
+        "score": "8.6",
+        "img": "img4",
+        "director": ["Bong Joon Ho"],
+        "genre": [
+            "Comedy",
+            "Drama",
+            "Thriller"
+        ],
+        "title": "Parasite",
+        "released": "8 November 2019"
+    },
+    "5": {
+        "duration": "177",
+        "score": "8.0",
+        "img": "img5",
+        "director": ["Noah Baumbach"],
+        "genre": [
+            "Comedy",
+            "Drama",
+            "Romance"
+        ],
+        "title": "Marriage Story",
+        "released": "6 December 2019"
+    },
+    "6": {
+        "duration": "180",
+        "score": "7.9",
+        "img": "img6",
+        "director": ["Rian Johnson"],
+        "genre": [
+            "Comedy",
+            "Crime",
+            "Drama"
+        ],
+        "title": "Knives Out",
+        "released": "27 November 2019"
+    },
+    "7": {
+        "duration": "100",
+        "score": "7.6",
+        "img": "img7",
+        "director": ["Lulu Wang"],
+        "genre": [
+            "Comedy",
+            "Drama"
+        ],
+        "title": "The Farewell",
+        "released": "9 August 2019"
+    },
+    "8": {
+        "duration": "135",
+        "score": "7.9",
+        "img": "img8",
+        "director": ["Greta Gerwig"],
+        "genre": [
+            "Drama",
+            "Romance"
+        ],
+        "title": "Little Women",
+        "released": "25 December 2019"
+    },
+    "9": {
+        "duration": "142",
+        "score": "8.5",
+        "img": "img9",
+        "director": ["Todd Phillips"],
+        "genre": [
+            "Crime",
+            "Drama",
+            "Thriller"
+        ],
+        "title": "Joker",
+        "released": "4 October 2019"
+    },
+    "40": {
+        "duration": "169",
+        "score": "6.8",
+        "img": "img40",
+        "director": ["Jay Roach"],
+        "genre": [
+            "Biography",
+            "Drama"
+        ],
+        "title": "Bombshell",
+        "released": "20 December 2019"
+    },
+    "41": {
+        "duration": "132",
+        "score": "7.0",
+        "img": "img41",
+        "director": ["Melina Matsoukas"],
+        "genre": [
+            "Crime",
+            "Drama",
+            "Romance"
+        ],
+        "title": "Queen & Slim",
+        "released": "27 November 2019"
+    },
+    "20": {
+        "duration": "179",
+        "score": "8.3",
+        "img": "img20",
+        "director": ["Sam Mendez"],
+        "genre": [
+            "Drama",
+            "War"
+        ],
+        "title": "1917",
+        "released": "10 January 2019"
+    },
+    "42": {
+        "duration": "126",
+        "score": "7.6",
+        "img": "img42",
+        "director": ["Todd Haynes"],
+        "genre": [
+            "Biography",
+            "Drama",
+            "History"
+        ],
+        "title": "DarkWaters",
+        "released": "6 December 2019"
+    },
+    "21": {
+        "duration": "178",
+        "score": "6.9",
+        "img": "img21",
+        "director": ["Jon Favreu"],
+        "genre": [
+            "Action",
+            "Adventure",
+            "Drama"
+        ],
+        "title": "The Lion King",
+        "released": "19 July 2019"
+    },
+    "43": {
+        "duration": "166",
+        "score": "6.7",
+        "img": "img43",
+        "director": ["Mati Diop"],
+        "genre": [
+            "Drama",
+            "Mystery",
+            "Romance"
+        ],
+        "title": "Atlantics",
+        "released": "29 November 2019"
+    }
 }

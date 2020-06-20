@@ -5,6 +5,10 @@ import UserOperation.ParserException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
+/**
+ * Stores all of the MovieController Class instances. In other words this class stores an unique instance of a movie
+ * controller for all movies.
+ */
 public class MovieAllController {
     private LinkedList<MovieController> movieControllers;
 
