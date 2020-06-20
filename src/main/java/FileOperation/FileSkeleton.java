@@ -19,7 +19,6 @@ public class FileSkeleton {
     }
 
     public boolean isEmpty() {
-        System.out.println(Dummy.class.getResource(fileName).getPath());
         File file = new File(Dummy.class.getResource(fileName).getFile());
         return !file.exists();
     }

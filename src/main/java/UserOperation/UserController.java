@@ -60,7 +60,7 @@ public class UserController {
         return userObject.getWatchedMovies();
     }
 
-    public void setWatchedMovies(WatchedMoviesObject watchedMovies) {
-        userObject.setWatchedMovies(watchedMovies);
+    public void setWatchedMovies(LinkedList<Integer> watchedMovies) {
+        userObject.setWatchedMovies(new WatchedMoviesObject(watchedMovies));
     }
 }

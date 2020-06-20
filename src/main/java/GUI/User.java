@@ -6,8 +6,11 @@ import UserOperation.ParserException;
 import UserOperation.UserController;
 
 import javax.swing.*;
+import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
@@ -48,8 +51,22 @@ public class User extends BaseGUI {
         MovieTableModel movieTableModel = new MovieTableModel(
                 initTable(super.getUserController().getWatchedMovies()));
         JTable jTable = new JTable(movieTableModel);
+
+        jTable.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (e.getClickCount() == 2) {
+                    JTable target = (JTable) e.getSource();
+                    int row = target.getSelectedRow();
+                    rowDoubleClicked((Integer) target.getValueAt(row, -1));
+                }
+            }
+        });
+
+
         jTable.setAutoCreateRowSorter(true);
         JScrollPane scrollPane = new JScrollPane(jTable);
+        scrollPane.setBorder(new TitledBorder("Watched History"));
 
         content.add(scrollPane, BorderLayout.CENTER);
 
@@ -62,7 +79,6 @@ public class User extends BaseGUI {
         MovieParser movieParser = new MovieParser();
         for (Integer key : keys) {
             try {
-                System.out.println(key.toString());
                 movieObjects.add(movieParser.parseSingle(key.toString()));
             } catch (ParserException ex) {
                 ex.printStackTrace();
@@ -70,6 +86,10 @@ public class User extends BaseGUI {
             }
         }
         return movieObjects;
+    }
+
+    private void rowDoubleClicked(int id) {
+        new MainGUI(2, super.getUserController(), super.getFrame(), id);
     }
 
     @Override
