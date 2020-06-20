@@ -84,9 +84,10 @@ public class Algorithm {
                 for (String genre : movieController.getGenreObject()) {
                     if (controller.getGenreObject().contains(genre))
                         count++;
-                    if (count >= 2)
+                    if (count >= 2){
                         match.add(controller);
-                    break;
+                        break;
+                    }
                 }
             }
         }
