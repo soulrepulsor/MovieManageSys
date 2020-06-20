@@ -1,9 +1,8 @@
 package Algorithm;
 
-import MovieOperation.MovieObject;
-import MovieOperation.MovieParser;
 import GUI.MovieTableModel;
-import UserOperation.ParserException;
+import MovieOperation.MovieController;
+import MovieOperation.MovieControllerManager;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -14,19 +13,15 @@ public class Algorithm {
         if (keyword.isEmpty() || keyword.isBlank())
             return new MovieTableModel();
 
-        ArrayList<MovieObject> searchResult = new ArrayList<>();
+        ArrayList<MovieController> searchResult = new ArrayList<>();
 
-        try {
-            LinkedList<MovieObject> movieObjects = (new MovieParser()).parseAll();
-            while (!movieObjects.isEmpty()) {
-                MovieObject movieObject = movieObjects.pop();
-                if (movieObject.getDirector().toLowerCase().equals(keyword.toLowerCase()) ||
-                        movieObject.getTitle().toLowerCase().equals(keyword.toLowerCase()))
-                    searchResult.add(movieObject);
-            }
-
-        } catch (ParserException ex) {
-            ex.printStackTrace();
+        LinkedList<MovieController> movieObjects =
+                MovieControllerManager.getMovieAllController().getMovieControllers();
+        while (!movieObjects.isEmpty()) {
+            MovieController movieObject = movieObjects.pop();
+            if (movieObject.getDirector().toLowerCase().equals(keyword.toLowerCase()) ||
+                    movieObject.getTitle().toLowerCase().equals(keyword.toLowerCase()))
+                searchResult.add(movieObject);
         }
 
         return new MovieTableModel(searchResult);
@@ -46,6 +41,9 @@ public class Algorithm {
             throw new Exception("Password doesn't match");
         else if (!email.equals(emailConfirm))
             throw new Exception("Email doesn't match");
+    }
 
+    public static ArrayList<MovieController> recommendation(LinkedList<String> genreList) {
+        return null;
     }
 }

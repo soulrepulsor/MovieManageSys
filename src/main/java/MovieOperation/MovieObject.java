@@ -2,7 +2,7 @@ package MovieOperation;
 
 import java.util.LinkedList;
 
-public class MovieObject {
+class MovieObject {
     private int id;
     private String title;
     private String director;
@@ -21,59 +21,59 @@ public class MovieObject {
         this.genreObject = genreObject;
     }
 
-    public int getId() {
+    int getId() {
         return id;
     }
 
-    public void setId(int id) {
+    void setId(int id) {
         this.id = id;
     }
 
-    public String getTitle() {
+    String getTitle() {
         return title;
     }
 
-    public void setTitle(String title) {
+    void setTitle(String title) {
         this.title = title;
     }
 
-    public String getDirector() {
+    String getDirector() {
         return director;
     }
 
-    public void setDirector(String director) {
+    void setDirector(String director) {
         this.director = director;
     }
 
-    public String getReleased() {
+    String getReleased() {
         return released;
     }
 
-    public void setReleased(String released) {
+    void setReleased(String released) {
         this.released = released;
     }
 
-    public float getScore() {
+    float getScore() {
         return score;
     }
 
-    public void setScore(float score) {
+    void setScore(float score) {
         this.score = score;
     }
 
-    public int getNumRating() {
+    int getNumRating() {
         return numRating;
     }
 
-    public void setNumRating(int numRating) {
+    void setNumRating(int numRating) {
         this.numRating = numRating;
     }
 
-    public LinkedList<String> getGenreObject() {
+    LinkedList<String> getGenreObject() {
         return genreObject.getGenre();
     }
 
-    public void setGenreObject(GenreObject genreObject) {
+    void setGenreObject(GenreObject genreObject) {
         this.genreObject = genreObject;
     }
 }

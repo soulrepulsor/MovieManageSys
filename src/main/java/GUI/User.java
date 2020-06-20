@@ -1,8 +1,7 @@
 package GUI;
 
-import MovieOperation.MovieObject;
-import MovieOperation.MovieParser;
-import UserOperation.ParserException;
+import MovieOperation.MovieController;
+import MovieOperation.MovieControllerManager;
 import UserOperation.UserController;
 
 import javax.swing.*;
@@ -63,7 +62,6 @@ public class User extends BaseGUI {
             }
         });
 
-
         jTable.setAutoCreateRowSorter(true);
         JScrollPane scrollPane = new JScrollPane(jTable);
         scrollPane.setBorder(new TitledBorder("Watched History"));
@@ -71,20 +69,14 @@ public class User extends BaseGUI {
         content.add(scrollPane, BorderLayout.CENTER);
 
         jPanel.add(content, BorderLayout.CENTER);
-
     }
 
-    private ArrayList<MovieObject> initTable(LinkedList<Integer> keys) {
-        ArrayList<MovieObject> movieObjects = new ArrayList<>();
-        MovieParser movieParser = new MovieParser();
-        for (Integer key : keys) {
-            try {
-                movieObjects.add(movieParser.parseSingle(key.toString()));
-            } catch (ParserException ex) {
-                ex.printStackTrace();
-                return null;
-            }
-        }
+    private ArrayList<MovieController> initTable(LinkedList<Integer> keys) {
+        ArrayList<MovieController> movieObjects = new ArrayList<>();
+
+        for (Integer key : keys)
+            movieObjects.add(MovieControllerManager.getMovieController(key));
+
         return movieObjects;
     }
 

@@ -8,7 +8,7 @@ import org.json.JSONObject;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-public class MovieParser {
+class MovieParser {
 
     private MovieFile rawFile;
 
@@ -19,11 +19,22 @@ public class MovieParser {
     private final String TOTALRATER = "numRating";
     private final String GENRE = "genre";
 
-    public MovieParser() {
+    MovieParser() {
         rawFile = new MovieFile();
     }
 
-    public LinkedList<MovieObject> parseAll() throws ParserException {
+    LinkedList<String> parseKeys() throws ParserException {
+        if (rawFile.isEmpty())
+            throw new ParserException("file doesn't exist or key is invalid");
+        LinkedList<String> result = new LinkedList<>();
+        Iterator<String> keys = rawFile.getFile().keys();
+
+        while (keys.hasNext())
+            result.add(keys.next());
+        return result;
+    }
+
+    LinkedList<MovieObject> parseAll() throws ParserException {
         if (rawFile.isEmpty()) {
             throw new ParserException("file not found");
         }
@@ -54,7 +65,7 @@ public class MovieParser {
         return movieObjects;
     }
 
-    public MovieObject parseSingle(String key) throws ParserException {
+    MovieObject parseSingle(String key) throws ParserException {
         if (rawFile.isEmpty() || !rawFile.getFile().has(key)) {
             throw new ParserException("file doesn't exist or key is invalid");
         }

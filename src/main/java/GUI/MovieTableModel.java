@@ -1,7 +1,7 @@
 package GUI;
 
-import MovieOperation.MovieObject;
-import MovieOperation.MovieParser;
+import MovieOperation.MovieController;
+import MovieOperation.MovieControllerManager;
 import UserOperation.ParserException;
 
 import javax.swing.table.AbstractTableModel;
@@ -10,19 +10,14 @@ import java.util.LinkedList;
 
 public class MovieTableModel extends AbstractTableModel {
     private String[] columnNames = {"Title", "Director"};
-    private ArrayList<MovieObject> movieObjects;
+    private ArrayList<MovieController> movieObjects;
 
     public MovieTableModel() {
-        MovieParser movieParser = new MovieParser();
-        try {
-            this.movieObjects = new ArrayList<>(movieParser.parseAll());
-        } catch (ParserException ex) {
-            ex.printStackTrace();
-            this.movieObjects = new ArrayList<>();
-        }
+        this.movieObjects =
+                new ArrayList<>(MovieControllerManager.getMovieAllController().getMovieControllers());
     }
 
-    public MovieTableModel(ArrayList<MovieObject> movieObjects) {
+    public MovieTableModel(ArrayList<MovieController> movieObjects) {
         this.movieObjects = movieObjects;
     }
 
